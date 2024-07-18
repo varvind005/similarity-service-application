@@ -14,11 +14,11 @@ COPY . .
 
 COPY Final_cleaned_dataset.csv /app/Final_cleaned_dataset.csv
 
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
+# Expose ports for FastAPI and Streamlit
+EXPOSE 8000 8501
 
 # Define environment variable
 ENV NAME ProductSimilarityApp
 
-# Run app.py when the container launches
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run FastAPI and Streamlit apps
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port 8000 & streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0"]

@@ -13,11 +13,12 @@ spec:
         app: similarity-service-application
     spec:
       containers:
-      - name: arvindveerelli/similarity-service-application
-        image: docker.io/library/arvindveerelli/similarity-service-application:latest
+      - name: similarity-service-application
+        image: arvindveerelli/similarity-service-application:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8000
+        - containerPort: 8501
         resources:
           limits:
             memory: "4Gi"
